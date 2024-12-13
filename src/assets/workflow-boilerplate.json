@@ -1,0 +1,108 @@
+{
+    "id": "your-workflow-id",
+    "name": "Your Workflow Name",
+    "version": "1.0",
+    "isActive": true,
+    "triggers": [
+      "your.trigger.event"
+    ],
+    "initiationEvent": {
+      "eventType": "your.initiation.event",
+      "version": "1.0",
+      "fields": [
+        {
+          "fieldName": "fieldName1",
+          "source": {
+            "type": "Variable",
+            "value": "$.yourVariable1"
+          }
+        },
+        {
+          "fieldName": "fieldName2",
+          "source": {
+            "type": "Variable",
+            "value": "$.yourVariable2"
+          }
+        }
+      ],
+      "actions": [],
+      "iterator": {
+        "type": "Constant",
+        "value": ""
+      }
+    },
+    "tasks": [
+      {
+        "name": "TaskName1",
+        "triggers": [
+          "your.task.trigger.event1",
+          "your.task.trigger.event2"
+        ],
+        "condition": {
+          "expression": "true",
+          "parameters": []
+        },
+        "templates": [
+          {
+            "eventType": "your.template.event1",
+            "version": "1.0",
+            "channel": "Outgoing",
+            "status": {
+              "text": "Pending",
+              "category": "Warning"
+            },
+            "fields": [],
+            "actionTypes": [
+              "action1",
+              "action2"
+            ]
+          }
+        ],
+        "actions": [
+          {
+            "type": "action1",
+            "eventType": "your.action.event1",
+            "label": "Action 1",
+            "requiredPrivilegeIds": [
+              "your.privilege.id1"
+            ]
+          },
+          {
+            "type": "action2",
+            "eventType": "your.action.event2",
+            "label": "Action 2",
+            "requiredPrivilegeIds": []
+          }
+        ],
+        "additionalAwaitableUpdates": []
+      }
+    ],
+    "terminationEvent": {
+      "eventType": "your.termination.event",
+      "version": "1.0",
+      "fields": [
+        "fieldName"
+      ],
+      "terminators": [
+        {
+          "eventType": "your.terminator.event.success",
+          "isSuccess": true,
+          "outcome": "success",
+          "status": {
+            "text": "Completed",
+            "category": "Muted"
+          }
+        },
+        {
+          "eventType": "your.terminator.event.failure",
+          "isSuccess": false,
+          "outcome": "failure",
+          "status": {
+            "text": "Failed",
+            "category": "Danger"
+          }
+        }
+      ]
+    }
+  }
+  
